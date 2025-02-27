@@ -47,7 +47,7 @@ export default function Sidebar() {
 
       {/* Overlay na mobile */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" onClick={() => setIsOpen(false)} />
+        <div className="fixed inset-0 bg-black opacity-50 z-40 lg:hidden" onClick={() => setIsOpen(false)} />
       )}
 
       {/* Sidebar */}
