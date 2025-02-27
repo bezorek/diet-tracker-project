@@ -29,7 +29,7 @@ const useProducts = () => {
    const controller = new AbortController();
 
     apiClient
-      .get<FetchProductsResponse>("?search_terms=sok&json=1", {signal: controller.signal})
+      .get<FetchProductsResponse>("?search_terms=szynka&json=1", {signal: controller.signal})
       .then((res) => setProducts(res.data.products))
       .catch((err) => {
          if(err instanceof CanceledError) return;

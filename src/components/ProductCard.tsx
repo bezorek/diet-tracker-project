@@ -1,5 +1,5 @@
 
-const RecipeCard = () => {
+const ProductCard = () => {
   return (
     <>
       <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white">
@@ -21,4 +21,4 @@ const RecipeCard = () => {
   );
 };
 
-export default RecipeCard;
+export default ProductCard;

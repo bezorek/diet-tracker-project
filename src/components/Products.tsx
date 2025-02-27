@@ -10,7 +10,7 @@ const Recipies = () => {
       <ul>
         {products.map((product) => (
           <li key={product.id}>
-            {product.generic_name} {product.image}
+            {product.generic_name}
           </li>
         ))}
       </ul>

@@ -7,7 +7,7 @@ const App = () => {
       <div className="flex">
         <Sidebar />
         <div className="p-5 ml-65 w-full">
-          <Recipies />
+          {/* <Recipies /> */}
         </div>
       </div>
     </>
