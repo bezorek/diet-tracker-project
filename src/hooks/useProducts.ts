@@ -6,18 +6,13 @@ interface FetchProductsResponse {
    products: Product[];
  }
  
- // interface Nutriments{
- //   energy: number,
- //   proteins: number,
- //   carbohydrates: number,
- //   fat: number,
- // }
- 
  interface Product {
    id: string;
    product_name: string;
-   image_url: string;
+   image_small_url: string;
+   brands: string;
    nutriments: {
+      'energy-kcal_serving': number,
       proteins_serving: number,
       fat_serving: number,
       carbohydrates_serving: number
