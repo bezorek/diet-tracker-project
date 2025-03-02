@@ -10,12 +10,13 @@ interface FetchProductsResponse {
    id: string;
    product_name: string;
    image_small_url: string;
+   quantity: number
    brands: string;
    nutriments: {
-      'energy-kcal_serving': number,
-      proteins_serving: number,
-      fat_serving: number,
-      carbohydrates_serving: number
+      'energy-kcal': number,
+      proteins: number,
+      fat: number,
+      carbohydrates: number
    };
  }
  
