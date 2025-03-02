@@ -11,13 +11,13 @@ const Dashboard = () => {
       }}
       templateColumns={{
         base: "1fr",
-        lg: "250px 1fr",
+        lg: "200px 1fr",
       }}
     >
-      <GridItem area='aside'>
+      <GridItem area="aside">
         <SideBar />
       </GridItem>
-      <GridItem area='main'>
+      <GridItem area="main">
         <Products />
       </GridItem>
     </Grid>

@@ -18,7 +18,6 @@ import {
   IoHomeOutline,
   IoFastFoodOutline,
   IoSettingsOutline,
-  IoMenu,
 } from "react-icons/io5";
 import { IconType } from "react-icons/lib";
 
@@ -36,7 +35,6 @@ const SideBar = () => {
     <Box minH="100vh">
       <SidebarContent
         onClose={() => onClose}
-        display={{ base: "none", md: "block" }}
       />
       <DrawerRoot open={open} placement="start" size="full">
         <DrawerContent>
@@ -61,12 +59,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     <Box
       bg='grey'
       borderRight="1px"
-      w={{ base: "full", md: 60 }}
+      width='200px'
       pos="fixed"
       h="full"
       {...rest}
     >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-around">
+      <Flex h="20" alignItems="center" mx="2" justifyContent="space-around" p={2}>
           <Image
             mr={5}
             boxSize="40px"
