@@ -1,13 +1,10 @@
 import { Box, DrawerRoot, DrawerContent } from "@chakra-ui/react";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import MenuContent from "./MenuContent";
 import MobileNav from "./MobileNav";
 
-interface NavComponentProps{
-  children: ReactNode;
-}
 
-const NavComponent = ({children}: NavComponentProps) => {
+const NavComponent = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -31,9 +28,6 @@ const NavComponent = ({children}: NavComponentProps) => {
         onOpen={() => setOpen(true)}
         display={{ base: "flex", md: "none" }}
       />
-      <Box>
-        {children}
-      </Box>
     </Box>
   );
 };

@@ -30,7 +30,7 @@ const ProductCard = ({
   fat,
 }: Props) => {
   return (
-    <Card.Root maxW="sm" overflow="hidden" bg="grey" m={3} borderRadius={20}>
+    <Card.Root overflow="hidden" bg="grey" m={3} borderRadius={20}>
       <Image height="220px" fit="initial" src={image_url} alt={name} />
       <Card.Body gap="2">
         <Card.Title>{name}</Card.Title>
