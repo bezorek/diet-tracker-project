@@ -10,7 +10,7 @@ const Recipies = () => {
   if (filteredProducts.length === 0) return <Text>Brak dostępnych produktów.</Text>;
   return (
     <>
-      <SimpleGrid minChildWidth='290px' padding='10px' >
+      <SimpleGrid minChildWidth='290px'>
         {filteredProducts.map((product) => (
           <ProductCard
             key={product.id}

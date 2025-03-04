@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Card,
+  Flex,
   HStack,
   Image,
   Text,
@@ -31,14 +32,16 @@ const ProductCard = ({
 }: Props) => {
   return (
     <Card.Root overflow="hidden" bg="grey" m={3} borderRadius={20}>
-      <Image height="220px" fit="initial" src={image_url} alt={name} />
-      <Card.Body gap="2">
-        <Card.Title>{name}</Card.Title>
-        <Box display='flex' justifyContent='space-between'>
+      <Image height="200px" fit="initial" src={image_url} alt={name} />
+      <Card.Body p={5}>
+        <Card.Title mb={2} fontSize="xl">
+          {name}
+        </Card.Title>
+        <Box display="flex" justifyContent="space-between">
           <Text>{brand}</Text>
           <Badge>{quantity}</Badge>
         </Box>
-        <HStack justifyContent="space-between">
+        <HStack justifyContent="space-between" my={4}>
           <Box>
             <Text fontSize="14px">Kalorie</Text>
             <Badge colorPalette="white" fontSize="14px" marginY="4px">
@@ -64,11 +67,11 @@ const ProductCard = ({
             </Badge>
           </Box>
         </HStack>
+        <Flex justifyContent='space-around' alignItems='center'>
+          <Button size='xs' variant="surface">Add to Recipe</Button>
+          <Button size='xs' variant="surface">Check details</Button>
+        </Flex>
       </Card.Body>
-      <Card.Footer display="flex" justifyContent="space-around">
-        <Button variant="solid">Add to Recipe</Button>
-        <Button variant="solid">Check details</Button>
-      </Card.Footer>
     </Card.Root>
   );
 };

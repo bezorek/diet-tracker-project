@@ -26,7 +26,6 @@ const NavComponent = () => {
       {/* mobile  nav */}
       <MobileNav
         onOpen={() => setOpen(true)}
-        display={{ base: "flex", md: "none" }}
       />
     </Box>
   );

@@ -3,7 +3,7 @@ import { IoFastFoodOutline, IoHomeOutline, IoSettingsOutline } from "react-icons
 import { IconType } from "react-icons/lib";
 import { LuLayoutDashboard } from "react-icons/lu";
 
-interface SidebarProps extends BoxProps {
+interface MobileContentProps extends BoxProps {
   onClose: () => void
 }
 
@@ -14,7 +14,7 @@ const sections = [
   { sectionName: "Settings", icon: IoSettingsOutline },
 ];
 
-const MenuContent = ({ onClose, ...rest }: SidebarProps) => {
+const MenuContent = ({ onClose, ...rest }: MobileContentProps) => {
   return (
     <Box
       bg="gray.800"
