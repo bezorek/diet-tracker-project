@@ -8,16 +8,15 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
+import NutrimentsList from "./NutrimentsList";
+import Nutriments from "@/entities/Nutriments";
 
 interface Props {
   name: string;
   image_url: string;
   brand: string;
   quantity: number;
-  calories: number;
-  proteins: number;
-  carbohydrates: number;
-  fat: number;
+  nutriments: Nutriments
 }
 
 const ProductCard = ({
@@ -25,10 +24,7 @@ const ProductCard = ({
   image_url,
   brand,
   quantity,
-  calories,
-  proteins,
-  carbohydrates,
-  fat,
+  nutriments
 }: Props) => {
   return (
     <Card.Root overflow="hidden" bg="grey" m={3} borderRadius={20}>
@@ -42,30 +38,7 @@ const ProductCard = ({
           <Badge>{quantity}</Badge>
         </Box>
         <HStack justifyContent="space-between" my={4}>
-          <Box>
-            <Text fontSize="14px">Kalorie</Text>
-            <Badge colorPalette="white" fontSize="14px" marginY="4px">
-              {calories}
-            </Badge>
-          </Box>
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <Text fontSize="14px">Białko</Text>
-            <Badge colorPalette="green" fontSize="14px" marginY="4px">
-              {proteins}
-            </Badge>
-          </Box>
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <Text fontSize="14px">Węglowodany</Text>
-            <Badge colorPalette="blue" fontSize="14px" marginY="4px">
-              {carbohydrates}
-            </Badge>
-          </Box>
-          <Box>
-            <Text fontSize="14px">Tłuszcze</Text>
-            <Badge colorPalette="orange" fontSize="14px" marginY="4px">
-              {fat}
-            </Badge>
-          </Box>
+          <NutrimentsList nutriments={nutriments}/>
         </HStack>
         <Flex justifyContent='space-around' alignItems='center'>
           <Button size='xs' variant="surface">Add to Recipe</Button>

@@ -1,23 +1,10 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
+import Product from "@/entities/Product";
 
 interface FetchProductsResponse {
    products: Product[];
- }
- 
- interface Product {
-   id: string;
-   product_name: string;
-   image_small_url: string;
-   quantity: number
-   brands: string;
-   nutriments: {
-      'energy-kcal': number,
-      proteins: number,
-      fat: number,
-      carbohydrates: number
-   };
  }
  
 
@@ -29,7 +16,7 @@ const useProducts = () => {
    const controller = new AbortController();
 
     apiClient
-      .get<FetchProductsResponse>("?search_terms=serek&json=1", {signal: controller.signal})
+      .get<FetchProductsResponse>("?search_terms=czekolada&tagtype_0=categories&tag_contains_0=contains&tag_0=snacks&tagtype_1=stores&tag_contains_1=contains&tag_1=biedronka&json=1", {signal: controller.signal})
       .then((res) => setProducts(res.data.products))
       .catch((err) => {
          if(err instanceof CanceledError) return;

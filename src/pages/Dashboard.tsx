@@ -1,9 +1,11 @@
+import CategoryList from "@/components/CategoryList";
 import NavComponent from "@/components/NavComponent";
 import Products from "@/components/Products";
 import SearchInput from "@/components/SearchInput";
-import { Box, HStack } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 const Dashboard = () => {
+  
   return (
     <>
       <NavComponent />
