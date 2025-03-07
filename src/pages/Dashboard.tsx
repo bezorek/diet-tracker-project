@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const Dashboard = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [searchText, setSearchText] = useState('')
 
   const handleCategoryClick = (category: string) => {
     console.log(selectedCategories);
@@ -19,10 +20,10 @@ const Dashboard = () => {
       <NavComponent />
       <Box ml={{ base: 0, md: 60 }}>
         <SearchInput
-          onSearch={(text) => console.log(text)}
+          onSearch={(text) => setSearchText(text)}
           onSelectCategory={handleCategoryClick}
         />
-        <Products selectedCategories={selectedCategories}/>
+        <Products searchText={searchText} selectedCategories={selectedCategories}/>
       </Box>
     </>
   );

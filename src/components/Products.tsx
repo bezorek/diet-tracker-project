@@ -4,10 +4,11 @@ import ProductCard from "./ProductCard";
 
 interface Props{
   selectedCategories: string[];
+  searchText: string;
 }
 
-const Products = ({selectedCategories}: Props) => {
-  const { products, error } = useProducts({selectedCategories});
+const Products = ({selectedCategories, searchText}: Props) => {
+  const { products, error } = useProducts({selectedCategories, searchText});
 
   if (error) return <Text className="text-red-500">{error}</Text>;
   return (
