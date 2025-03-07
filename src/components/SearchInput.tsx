@@ -6,9 +6,10 @@ import CategoryList from "./CategoryList";
 
 interface Props {
   onSearch: (searchText: string) => void;
+  onSelectCategory: (category: string) => void;
 }
 
-const SearchInput = ({ onSearch }: Props) => {
+const SearchInput = ({ onSearch, onSelectCategory }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
 
   return (
@@ -34,7 +35,7 @@ const SearchInput = ({ onSearch }: Props) => {
         </InputGroup>
       </Flex>
       <Box mt={5}>
-      <CategoryList />
+      <CategoryList onSelectCategory={onSelectCategory}/>
       </Box>
     </form>
     </Box>

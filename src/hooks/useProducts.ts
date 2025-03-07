@@ -7,23 +7,40 @@ interface FetchProductsResponse {
    products: Product[];
  }
  
+ interface Props{
+  selectedCategories: string[]
+ }
 
-const useProducts = () => {
+const useProducts = ({selectedCategories}: Props) => {
  const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
    const controller = new AbortController();
 
+    const params: Record<string, string | number> = {
+      search_terms: '',
+      json: 1,
+    }
+
+    selectedCategories.forEach((category, index) => {
+      params[`tagtype_${index}`] = 'categories';
+      params[`tag_contains_${index}`] = 'contains';
+      params[`tag_${index}`] = category;
+    });
+
     apiClient
-      .get<FetchProductsResponse>("?search_terms=czekolada&tagtype_0=categories&tag_contains_0=contains&tag_0=snacks&tagtype_1=stores&tag_contains_1=contains&tag_1=biedronka&json=1", {signal: controller.signal})
+      .get<FetchProductsResponse>("/cgi/search.pl", {
+        signal: controller.signal, 
+        params,
+      })
       .then((res) => setProducts(res.data.products))
       .catch((err) => {
          if(err instanceof CanceledError) return;
          setError(err.message)});
 
       return () => controller.abort();
-  }, []);
+  }, [selectedCategories]);
 
   return {products, error}
 }

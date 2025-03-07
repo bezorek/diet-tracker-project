@@ -13,11 +13,20 @@ const categories = [
   { name: "sweets", icon: <LuCandy /> },
 ];
 
-const CategoryList = () => {
+interface Props {
+  onSelectCategory: (category: string) => void;
+}
+
+const CategoryList = ({onSelectCategory}: Props) => {
   return (
     <>
       {categories.map((category) => (
-        <IconButton key={category.name} variant="surface" mr={5}>
+        <IconButton
+          key={category.name}
+          variant="surface"
+          mr={5}
+          onClick={() => onSelectCategory(category.name)}
+        >
           {category.icon}
         </IconButton>
       ))}
