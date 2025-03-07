@@ -1,14 +1,14 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import useProducts from "../hooks/useProducts";
 import ProductCard from "./ProductCard";
+import { ProductQuery } from "@/pages/Dashboard";
 
 interface Props{
-  selectedCategories: string[];
-  searchText: string;
+  productQuery: ProductQuery
 }
 
-const Products = ({selectedCategories, searchText}: Props) => {
-  const { products, error } = useProducts({selectedCategories, searchText});
+const Products = ({productQuery}: Props) => {
+  const { products, error } = useProducts(productQuery);
 
   if (error) return <Text className="text-red-500">{error}</Text>;
   return (

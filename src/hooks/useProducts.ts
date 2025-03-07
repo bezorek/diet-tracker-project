@@ -2,17 +2,14 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 import Product from "@/entities/Product";
+import { ProductQuery } from "@/pages/Dashboard";
 
 interface FetchProductsResponse {
    products: Product[];
  }
  
- interface Props{
-  selectedCategories: string[]
-  searchText: string;
- }
 
-const useProducts = ({selectedCategories, searchText}: Props) => {
+const useProducts = (productQuery: ProductQuery) => {
  const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState("");
 
@@ -20,11 +17,11 @@ const useProducts = ({selectedCategories, searchText}: Props) => {
    const controller = new AbortController();
 
     const params: Record<string, string | number> = {
-      search_terms: searchText,
+      search_terms: productQuery.searchText,
       json: 1,
     }
 
-    selectedCategories.forEach((category, index) => {
+    productQuery.categories.forEach((category, index) => {
       params[`tagtype_${index}`] = 'categories';
       params[`tag_contains_${index}`] = 'contains';
       params[`tag_${index}`] = category;
@@ -41,7 +38,7 @@ const useProducts = ({selectedCategories, searchText}: Props) => {
          setError(err.message)});
 
       return () => controller.abort();
-  }, [searchText, selectedCategories]);
+  }, [productQuery]);
 
   return {products, error}
 }

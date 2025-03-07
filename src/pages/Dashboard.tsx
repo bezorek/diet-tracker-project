@@ -4,15 +4,21 @@ import SearchInput from "@/components/SearchInput";
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 
+export interface ProductQuery {
+  searchText: string
+  categories: string[];
+}
+
 const Dashboard = () => {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [searchText, setSearchText] = useState('')
+  // const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  // const [searchText, setSearchText] = useState('')
+
+  const [productQuery, setProductQuery] = useState<ProductQuery>({searchText: '', categories: []});
 
   const handleCategoryClick = (category: string) => {
-    console.log(selectedCategories);
-    selectedCategories.includes(category)
-      ? setSelectedCategories(selectedCategories.filter((c) => c !== category))
-      : setSelectedCategories([...selectedCategories, category]);
+    productQuery.categories.includes(category)
+      ? setProductQuery({...productQuery, categories: productQuery.categories.filter((c) => c !== category)})
+      : setProductQuery({...productQuery, categories: [...productQuery.categories, category]});
   };
 
   return (
@@ -20,10 +26,12 @@ const Dashboard = () => {
       <NavComponent />
       <Box ml={{ base: 0, md: 60 }}>
         <SearchInput
-          onSearch={(text) => setSearchText(text)}
+          onSearch={(searchText) => setProductQuery({...productQuery, searchText})}
           onSelectCategory={handleCategoryClick}
         />
-        <Products searchText={searchText} selectedCategories={selectedCategories}/>
+        <Products
+          productQuery={productQuery}
+        />
       </Box>
     </>
   );
