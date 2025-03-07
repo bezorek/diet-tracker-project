@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import NutrimentsList from "./NutrimentsList";
 import Nutriments from "@/entities/Nutriments";
+import noImage from "../images/no-image-placeholder-6f3882e0.webp"
 
 interface Props {
   name: string;
@@ -28,7 +29,7 @@ const ProductCard = ({
 }: Props) => {
   return (
     <Card.Root overflow="hidden" bg="grey" m={3} borderRadius={20}>
-      <Image height="200px" fit="initial" src={image_url} alt={name} />
+      <Image height="200px" fit="initial" src={image_url ? image_url : noImage} alt={name} />
       <Card.Body p={5}>
         <Card.Title mb={2} fontSize="xl">
           {name}

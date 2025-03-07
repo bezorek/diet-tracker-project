@@ -25,6 +25,7 @@ const Products = ({productQuery}: Props) => {
           />
         ))}
       </SimpleGrid>
+      {console.log(products)}
     </>
   );
 };

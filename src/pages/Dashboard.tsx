@@ -10,9 +10,6 @@ export interface ProductQuery {
 }
 
 const Dashboard = () => {
-  // const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  // const [searchText, setSearchText] = useState('')
-
   const [productQuery, setProductQuery] = useState<ProductQuery>({searchText: '', categories: []});
 
   const handleCategoryClick = (category: string) => {
