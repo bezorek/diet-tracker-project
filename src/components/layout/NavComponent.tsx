@@ -3,7 +3,6 @@ import { useState } from "react";
 import MenuContent from "./MenuContent";
 import MobileNav from "./MobileNav";
 
-
 const NavComponent = () => {
   const [open, setOpen] = useState(false);
 
@@ -24,9 +23,7 @@ const NavComponent = () => {
         </DrawerContent>
       </DrawerRoot>
       {/* mobile  nav */}
-      <MobileNav
-        onOpen={() => setOpen(true)}
-      />
+      <MobileNav onOpen={() => setOpen(true)} />
     </Box>
   );
 };

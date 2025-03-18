@@ -1,36 +1,45 @@
 import { TbMeat } from "react-icons/tb";
 import { LuMilk, LuCandy } from "react-icons/lu";
 import { PiPlant, PiGrains } from "react-icons/pi";
-import { IconButton } from "@chakra-ui/react";
+import { Button, HStack, Text } from "@chakra-ui/react";
 import { GiFruitTree } from "react-icons/gi";
+import { ProductQuery } from "@/pages/Dashboard";
 
 const categories = [
-  { name: "fruit", icon: <GiFruitTree /> },
-  { name: "vegetables", icon: <PiPlant /> },
-  { name: "meat", icon: <TbMeat /> },
-  { name: "dairy", icon: <LuMilk /> },
-  { name: "grain", icon: <PiGrains /> },
-  { name: "sweets", icon: <LuCandy /> },
+  { name: "Fruit", icon: <GiFruitTree /> },
+  { name: "Vegetables", icon: <PiPlant /> },
+  { name: "Meat", icon: <TbMeat /> },
+  { name: "Dairy", icon: <LuMilk /> },
+  { name: "Grain", icon: <PiGrains /> },
+  { name: "Sweets", icon: <LuCandy /> },
 ];
 
 interface Props {
   onSelectCategory: (category: string) => void;
+  productQuery: ProductQuery
 }
 
-const CategoryList = ({onSelectCategory}: Props) => {
+const CategoryList = ({ onSelectCategory, productQuery }: Props) => {
+console.log(productQuery.categories);
   return (
-    <>
+    <HStack>
       {categories.map((category) => (
-        <IconButton
+        <Button
           key={category.name}
           variant="surface"
-          mr={5}
+          colorPalette={productQuery.categories.includes(category.name) ? "cyan" : "gray"}
+
+          mr={3}
+          _hover={{
+            colorPalette: 'cyan'
+          }}
           onClick={() => onSelectCategory(category.name)}
         >
           {category.icon}
-        </IconButton>
+          <Text display={{base: "none", lg: 'block'}}>{category.name}</Text>
+        </Button>
       ))}
-    </>
+    </HStack>
   );
 };
 

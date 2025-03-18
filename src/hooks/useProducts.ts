@@ -7,7 +7,6 @@ import { ProductQuery } from "@/pages/Dashboard";
 interface FetchProductsResponse {
    products: Product[];
  }
- 
 
 const useProducts = (productQuery: ProductQuery) => {
  const [products, setProducts] = useState<Product[]>([]);
@@ -36,7 +35,7 @@ const useProducts = (productQuery: ProductQuery) => {
       .catch((err) => {
          if(err instanceof CanceledError) return;
          setError(err.message)});
-
+         
       return () => controller.abort();
   }, [productQuery]);
 

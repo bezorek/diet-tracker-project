@@ -1,21 +1,30 @@
-import NavComponent from "@/components/NavComponent";
+import NavComponent from "@/components/layout/NavComponent";
 import Products from "@/components/Products";
 import SearchInput from "@/components/SearchInput";
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 
 export interface ProductQuery {
-  searchText: string
+  searchText: string;
   categories: string[];
 }
 
 const Dashboard = () => {
-  const [productQuery, setProductQuery] = useState<ProductQuery>({searchText: '', categories: []});
+  const [productQuery, setProductQuery] = useState<ProductQuery>({
+    searchText: "",
+    categories: [],
+  });
 
   const handleCategoryClick = (category: string) => {
     productQuery.categories.includes(category)
-      ? setProductQuery({...productQuery, categories: productQuery.categories.filter((c) => c !== category)})
-      : setProductQuery({...productQuery, categories: [...productQuery.categories, category]});
+      ? setProductQuery({
+          ...productQuery,
+          categories: productQuery.categories.filter((c) => c !== category),
+        })
+      : setProductQuery({
+          ...productQuery,
+          categories: [...productQuery.categories, category],
+        });
   };
 
   return (
@@ -23,12 +32,13 @@ const Dashboard = () => {
       <NavComponent />
       <Box ml={{ base: 0, md: 60 }}>
         <SearchInput
-          onSearch={(searchText) => setProductQuery({...productQuery, searchText})}
+          productQuery={productQuery}
+          onSearch={(searchText) =>
+            setProductQuery({ ...productQuery, searchText })
+          }
           onSelectCategory={handleCategoryClick}
         />
-        <Products
-          productQuery={productQuery}
-        />
+        <Products productQuery={productQuery} />
       </Box>
     </>
   );
