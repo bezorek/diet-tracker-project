@@ -26,7 +26,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileNavProps) => {
         borderColor="gray.500"
         onClick={onOpen}
       >
-        <IoMenu color="#71717a" />
+        <IoMenu/>
       </IconButton>
       <Flex alignItems="center" justifyContent="space-around" display={{ base: 'flex', md: 'none' }}>
         <Image

@@ -1,4 +1,4 @@
-import { SimpleGrid, Text } from "@chakra-ui/react";
+import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import useProducts from "../hooks/useProducts";
 import ProductCard from "./ProductCard";
 import { ProductQuery } from "@/pages/Dashboard";
@@ -8,13 +8,15 @@ interface Props{
 }
 
 const Products = ({productQuery}: Props) => {
-  const { products, error } = useProducts(productQuery);
+  const {data, error, isLoading} = useProducts(productQuery);
 
-  if (error) return <Text className="text-red-500">{error}</Text>;
+  if (error) return <Text className="text-red-500">{error.message}</Text>;
   return (
     <>
       <SimpleGrid minChildWidth='290px'>
-        {products.map((product) => (
+        {isLoading && <Spinner></Spinner>}
+        
+        {data?.products.map((product) => (
           <ProductCard
             key={product.id}
             name={product.product_name}
