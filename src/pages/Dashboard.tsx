@@ -1,5 +1,6 @@
 import NavComponent from "@/components/layout/NavComponent";
-import Products from "@/components/Products";
+import ProductsGrid from "@/components/ProductsGrid";
+import Products from "@/components/ProductsGrid";
 import SearchInput from "@/components/SearchInput";
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
@@ -38,7 +39,7 @@ const Dashboard = () => {
           }
           onSelectCategory={handleCategoryClick}
         />
-        <Products productQuery={productQuery} />
+        <ProductsGrid productQuery={productQuery} />
       </Box>
     </>
   );
