@@ -13,9 +13,9 @@ const Products = ({productQuery}: Props) => {
   if (error) return <Text className="text-red-500">{error.message}</Text>;
   return (
     <>
-      <SimpleGrid minChildWidth='290px'>
+      <SimpleGrid minChildWidth='290px' gap={4}>
         {isLoading && <Spinner></Spinner>}
-        
+
         {data?.products.map((product) => (
           <ProductCard
             key={product.id}

@@ -28,7 +28,7 @@ const ProductCard = ({
   nutriments
 }: Props) => {
   return (
-    <Card.Root overflow="hidden" bg="grey" m={3} borderRadius={20}>
+    <Card.Root overflow="hidden" bg="grey" borderRadius={20}>
       <Image height="200px" fit="initial" src={image_url ? image_url : noImage} alt={name} />
       <Card.Body p={5}>
         <Card.Title mb={2} fontSize="xl">

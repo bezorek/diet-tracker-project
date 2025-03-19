@@ -29,8 +29,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <NavComponent />
-      <Box ml={{ base: 0, md: 60 }}>
+      <NavComponent/>
+      <Box ml={{ base: 0, md: '240px' }} padding='20px'>
         <SearchInput
           productQuery={productQuery}
           onSearch={(searchText) =>

@@ -15,7 +15,7 @@ const SearchInput = ({ onSearch, onSelectCategory, productQuery }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
 
   return (
-   <Box m={3}>
+   <Box>
     <form
       onSubmit={(e) => {
         e.preventDefault();
@@ -36,7 +36,7 @@ const SearchInput = ({ onSearch, onSelectCategory, productQuery }: Props) => {
           />
         </InputGroup>
       </Flex>
-      <Box mt={5}>
+      <Box my={5}>
       <CategoryList productQuery={productQuery} onSelectCategory={onSelectCategory}/>
       </Box>
     </form>
