@@ -1,6 +1,5 @@
 import NavComponent from "@/components/layout/NavComponent";
 import ProductsGrid from "@/components/ProductsGrid";
-import Products from "@/components/ProductsGrid";
 import SearchInput from "@/components/SearchInput";
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";

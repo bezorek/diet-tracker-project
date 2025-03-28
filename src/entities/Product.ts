@@ -4,7 +4,7 @@ export default interface Product {
    id: string;
    product_name: string;
    image_small_url: string;
-   quantity: number
+   quantity: string;
    brands: string;
    nutriments: Nutriments;
  }

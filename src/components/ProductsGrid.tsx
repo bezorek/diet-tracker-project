@@ -45,7 +45,7 @@ const ProductsGrid = ({ productQuery }: Props) => {
                     name={product.product_name}
                     image_url={product.image_small_url}
                     brand={product.brands}
-                    quantity={product.quantity}
+                    quantity={product.quantity || 'brak'}
                     nutriments={product.nutriments}
                   />
                 );

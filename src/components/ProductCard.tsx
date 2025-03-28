@@ -16,7 +16,7 @@ interface Props {
   name: string;
   image_url: string;
   brand: string;
-  quantity: number;
+  quantity: string;
   nutriments: Nutriments
 }
 
