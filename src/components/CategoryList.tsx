@@ -1,9 +1,10 @@
 import { TbMeat } from "react-icons/tb";
 import { LuMilk, LuCandy } from "react-icons/lu";
 import { PiPlant, PiGrains } from "react-icons/pi";
-import { Button, HStack, Text } from "@chakra-ui/react";
+import { Box, Button, HStack, Text } from "@chakra-ui/react";
 import { GiFruitTree } from "react-icons/gi";
 import { ProductQuery } from "@/pages/Dashboard";
+import CustomIconButton from "./CustomIconButton";
 
 const categories = [
   { name: "Fruit", icon: <GiFruitTree /> },
@@ -16,27 +17,43 @@ const categories = [
 
 interface Props {
   onSelectCategory: (category: string) => void;
-  productQuery: ProductQuery
+  productQuery: ProductQuery;
 }
 
 const CategoryList = ({ onSelectCategory, productQuery }: Props) => {
-console.log(productQuery.categories);
   return (
-    <HStack>
+    <HStack display={{ base: "none", md: "block" }}>
       {categories.map((category) => (
+        // TODO - zmien generowanie przycisków za pomocą CustomIconButton
+        // <Box
+        //   key={category.name}
+        //   mr={3}
+        //   _hover={{
+        //     colorPalette: "cyan",
+        //   }}
+        //   onClick={() => onSelectCategory(category.name)}
+        // >
+        //   <CustomIconButton>
+        //     {category.icon}
+        //     <Text display={{ base: "none", lg: "block" }}>{category.name}</Text>
+        //   </CustomIconButton>
+        // </Box>
+
         <Button
           key={category.name}
           variant="surface"
-          colorPalette={productQuery.categories.includes(category.name) ? "cyan" : "gray"}
-
+          rounded='full'
+          colorPalette={
+            productQuery.categories.includes(category.name) ? "cyan" : "gray"
+          }
           mr={3}
           _hover={{
-            colorPalette: 'cyan'
+            colorPalette: "cyan",
           }}
           onClick={() => onSelectCategory(category.name)}
         >
           {category.icon}
-          <Text display={{base: "none", lg: 'block'}}>{category.name}</Text>
+          <Text display={{ base: "none", lg: "block" }}>{category.name}</Text>
         </Button>
       ))}
     </HStack>

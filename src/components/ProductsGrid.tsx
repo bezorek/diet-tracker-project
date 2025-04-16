@@ -24,7 +24,7 @@ const ProductsGrid = ({ productQuery }: Props) => {
       next={() => fetchNextPage()}
       loader={<Spinner />}
     >
-      <SimpleGrid minChildWidth="290px" gap={4}>
+      <SimpleGrid minChildWidth="290px" gap={5}>
         {isLoading && <Spinner></Spinner>}
 
         {data?.pages.map((page, index) => (
@@ -38,7 +38,6 @@ const ProductsGrid = ({ productQuery }: Props) => {
                   product.nutriments?.carbohydrates !== undefined
               )
               .map((product) => {
-                console.log(product);
                 return (
                   <ProductCard
                     key={product.id}

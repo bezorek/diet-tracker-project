@@ -1,14 +1,8 @@
-import {
-  Box,
-  Flex,
-  FlexProps,
-  Heading,
-  IconButton,
-  Image,
-} from "@chakra-ui/react";
+import { Box, Flex, FlexProps, Heading, Image } from "@chakra-ui/react";
 import { IoMenu } from "react-icons/io5";
 import { PiCarrot } from "react-icons/pi";
 import { ColorModeButton } from "../ui/color-mode";
+import CustomIconButton from "../CustomIconButton";
 
 interface MobileNavProps extends FlexProps {
   onOpen: () => void;
@@ -23,20 +17,15 @@ const MobileNav = ({ onOpen, ...rest }: MobileNavProps) => {
       height="20"
       borderBottomWidth="1px"
       justifyContent="space-between"
-      bg="gray.800"
-      borderColor="gray.600"
+      bg="bg"
+      borderColor="gray.emphasized"
       {...rest}
     >
-      <IconButton
-        display={{ base: "flex", md: "none" }}
-        aria-label="open menu"
-        variant="outline"
-        borderColor="gray.500"
-        size="lg"
-        onClick={onOpen}
-      >
-        <IoMenu />
-      </IconButton>
+      <Box display={{ base: "flex", md: "none" }} onClick={onOpen}>
+        <CustomIconButton>
+          <IoMenu />
+        </CustomIconButton>
+      </Box>
 
       <Flex
         alignItems="center"
@@ -53,18 +42,19 @@ const MobileNav = ({ onOpen, ...rest }: MobileNavProps) => {
         </Heading>
       </Flex>
 
-      <Flex md={{width: '100%', justifyContent: 'space-between'}}>
+      <Flex md={{ width: "100%", justifyContent: "space-between" }}>
         <Box pr={3}>
-          <ColorModeButton variant="ghost" borderColor="gray.500" size='lg'/>
+          <ColorModeButton
+            variant="surface"
+            colorPalette="gray"
+            borderColor="border.emphasized"
+            size="lg"
+          />
         </Box>
-        <IconButton
-          aria-label="open menu"
-          variant="ghost"
-          borderColor="gray.500"
-          size="lg"
-        >
+
+        <CustomIconButton>
           <PiCarrot />
-        </IconButton>
+        </CustomIconButton>
       </Flex>
     </Flex>
   );

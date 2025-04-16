@@ -1,11 +1,9 @@
 import {
   Box,
   BoxProps,
-  CloseButton,
   Flex,
   FlexProps,
   Heading,
-  Icon,
   Image,
 } from "@chakra-ui/react";
 import {
@@ -13,26 +11,27 @@ import {
   IoHomeOutline,
   IoSettingsOutline,
 } from "react-icons/io5";
-import { IconType } from "react-icons/lib";
-import { LuLayoutDashboard } from "react-icons/lu";
+import { LuLayoutDashboard, LuX } from "react-icons/lu";
+import CustomIconButton from "../CustomIconButton";
+import { ReactNode } from "react";
 
 interface MobileContentProps extends BoxProps {
   onClose: () => void;
 }
 
 const sections = [
-  { sectionName: "Home", icon: IoHomeOutline },
-  { sectionName: "DashBoard", icon: LuLayoutDashboard },
-  { sectionName: "Food", icon: IoFastFoodOutline },
-  { sectionName: "Settings", icon: IoSettingsOutline },
+  { sectionName: "Home", icon: <IoHomeOutline /> },
+  { sectionName: "DashBoard", icon: <LuLayoutDashboard /> },
+  { sectionName: "Food", icon: <IoFastFoodOutline /> },
+  { sectionName: "Settings", icon: <IoSettingsOutline /> },
 ];
 
 const MenuContent = ({ onClose, ...rest }: MobileContentProps) => {
   return (
     <Box
-      bg="gray.800"
+      bg="bg"
       borderRightWidth="1px"
-      borderColor="gray.600"
+      borderColor="border.emphasized"
       w={{ base: "full", md: "240px" }}
       pos="fixed"
       h="full"
@@ -55,11 +54,12 @@ const MenuContent = ({ onClose, ...rest }: MobileContentProps) => {
             Diet tracker
           </Heading>
         </Flex>
-        <CloseButton
-          borderColor="gray.500"
-          display={{ base: "flex", md: "none" }}
-          onClick={onClose}
-        />
+        <Box mr={2} display={{ base: "flex", md: "none" }} onClick={onClose}>
+          {/* CLOSE BUTTON */}
+          <CustomIconButton>
+            <LuX />
+          </CustomIconButton>
+        </Box>
       </Flex>
 
       {sections.map((section) => (
@@ -72,41 +72,26 @@ const MenuContent = ({ onClose, ...rest }: MobileContentProps) => {
 };
 
 interface NavItemProps extends FlexProps {
-  icon: IconType;
+  icon: ReactNode;
   children: string;
 }
 const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
   return (
-    <Box
-      as="a"
-      style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
+    <Flex
+      alignItems="center"
+      p="4"
+      mx="4"
+      borderRadius="lg"
+      cursor="pointer"
+      _hover={{
+        bg: "bg.emphasized",
+      }}
+      fontSize="lg"
+      {...rest}
     >
-      <Flex
-        alignItems="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        cursor="pointer"
-        _hover={{
-          bg: "cyan.700",
-        }}
-        fontSize="xl"
-        {...rest}
-      >
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: "white",
-            }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Box>
+      <Box mr={2}>{icon}</Box>
+      {children}
+    </Flex>
   );
 };
 

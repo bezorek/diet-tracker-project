@@ -10,14 +10,14 @@ import {
 } from "@chakra-ui/react";
 import NutrimentsList from "./NutrimentsList";
 import Nutriments from "@/entities/Nutriments";
-import noImage from "../images/no-image-placeholder-6f3882e0.webp"
+import noImage from "../images/no-image-placeholder-6f3882e0.webp";
 
 interface Props {
   name: string;
   image_url: string;
   brand: string;
   quantity: string;
-  nutriments: Nutriments
+  nutriments: Nutriments;
 }
 
 const ProductCard = ({
@@ -25,13 +25,26 @@ const ProductCard = ({
   image_url,
   brand,
   quantity,
-  nutriments
+  nutriments,
 }: Props) => {
   return (
-    <Card.Root overflow="hidden" bg="grey" borderRadius={20}>
-      <Image height="200px" fit="initial" src={image_url ? image_url : noImage} alt={name} />
-      <Card.Body p={5}>
-        <Card.Title mb={2} fontSize="xl">
+    <Card.Root
+      overflow="hidden"
+      bg='bg.emphasized'
+      borderRadius={20}
+      _hover={{
+        transform: "scale(1.02)",
+        transition: "transform .15s ease-in",
+      }}
+    >
+      <Image
+        height="200px"
+        fit="initial"
+        src={image_url ? image_url : noImage}
+        alt={name}
+      />
+      <Card.Body>
+        <Card.Title mb={2} fontSize="lg">
           {name}
         </Card.Title>
         <Box display="flex" justifyContent="space-between">
@@ -39,11 +52,15 @@ const ProductCard = ({
           <Badge>{quantity}</Badge>
         </Box>
         <HStack justifyContent="space-between" my={4}>
-          <NutrimentsList nutriments={nutriments}/>
+          <NutrimentsList nutriments={nutriments} />
         </HStack>
-        <Flex justifyContent='space-around' alignItems='center'>
-          <Button size='xs' variant="surface">Add to Recipe</Button>
-          <Button size='xs' variant="surface">Check details</Button>
+        <Flex justifyContent="space-around" alignItems="center" >
+          <Button size="sm" variant="subtle" colorPalette='teal' >
+            Add to Recipe
+          </Button>
+          <Button size="sm" variant="subtle" colorPalette='blue'>
+            Check details
+          </Button>
         </Flex>
       </Card.Body>
     </Card.Root>
