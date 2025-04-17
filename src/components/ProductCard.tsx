@@ -30,7 +30,7 @@ const ProductCard = ({
   return (
     <Card.Root
       overflow="hidden"
-      bg='bg.emphasized'
+      bg="bg.emphasized"
       borderRadius={20}
       _hover={{
         transform: "scale(1.02)",
@@ -47,18 +47,20 @@ const ProductCard = ({
         <Card.Title mb={2} fontSize="lg">
           {name}
         </Card.Title>
-        <Box display="flex" justifyContent="space-between">
+        <Flex justifyContent="space-between">
           <Text>{brand}</Text>
-          <Badge>{quantity}</Badge>
-        </Box>
+          <Badge fontSize={12} rounded="full" px={2} py={1}>
+            {quantity}
+          </Badge>
+        </Flex>
         <HStack justifyContent="space-between" my={4}>
           <NutrimentsList nutriments={nutriments} />
         </HStack>
-        <Flex justifyContent="space-around" alignItems="center" >
-          <Button size="sm" variant="subtle" colorPalette='teal' >
+        <Flex justifyContent="space-around" alignItems="center">
+          <Button size="sm" variant="subtle" colorPalette="teal">
             Add to Recipe
           </Button>
-          <Button size="sm" variant="subtle" colorPalette='blue'>
+          <Button size="sm" variant="subtle" colorPalette="blue">
             Check details
           </Button>
         </Flex>

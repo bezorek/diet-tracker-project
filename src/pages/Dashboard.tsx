@@ -38,7 +38,7 @@ const Dashboard = () => {
           }
           onSelectCategory={handleCategoryClick}
         />
-        <ProductsGrid productQuery={productQuery} />
+        <ProductsGrid productQuery={productQuery}/>
       </Box>
     </>
   );

@@ -4,19 +4,20 @@ import ProductCard from "./ProductCard";
 import { ProductQuery } from "@/pages/Dashboard";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import ProductCardSkeleton from "./ProductCardSkeleton";
 
 interface Props {
   productQuery: ProductQuery;
 }
 
 const ProductsGrid = ({ productQuery }: Props) => {
-  const { data, error, isLoading, fetchNextPage, hasNextPage } =
-    useProducts(productQuery);
+  const { data, error, isLoading, fetchNextPage, hasNextPage } = useProducts(productQuery);
 
   if (error) return <Text className="text-red-500">{error.message}</Text>;
 
-  const fetchedGamesCount =
-    data?.pages.reduce((total, page) => total + page.products.length, 0) || 0;
+  const fetchedGamesCount = data?.pages.reduce((total, page) => total + page.products.length, 0) || 0;
+  const skeletons = Array.from({length: 20});
+
   return (
     <InfiniteScroll
       dataLength={fetchedGamesCount}
@@ -25,8 +26,7 @@ const ProductsGrid = ({ productQuery }: Props) => {
       loader={<Spinner />}
     >
       <SimpleGrid minChildWidth="290px" gap={5}>
-        {isLoading && <Spinner></Spinner>}
-
+        {isLoading && skeletons.map((_, i) => <ProductCardSkeleton key={i} />)}
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
             {page.products

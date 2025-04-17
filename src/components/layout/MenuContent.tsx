@@ -6,12 +6,11 @@ import {
   Heading,
   Image,
 } from "@chakra-ui/react";
-import {
-  IoFastFoodOutline,
-  IoHomeOutline,
-  IoSettingsOutline,
-} from "react-icons/io5";
-import { LuLayoutDashboard, LuX } from "react-icons/lu";
+import { FiHome, FiBarChart2, FiSettings } from "react-icons/fi";
+
+import { PiHamburger } from "react-icons/pi";
+
+import { LuX } from "react-icons/lu";
 import CustomIconButton from "../CustomIconButton";
 import { ReactNode } from "react";
 
@@ -20,10 +19,10 @@ interface MobileContentProps extends BoxProps {
 }
 
 const sections = [
-  { sectionName: "Home", icon: <IoHomeOutline /> },
-  { sectionName: "DashBoard", icon: <LuLayoutDashboard /> },
-  { sectionName: "Food", icon: <IoFastFoodOutline /> },
-  { sectionName: "Settings", icon: <IoSettingsOutline /> },
+  { sectionName: "Home", icon: <FiHome /> },
+  { sectionName: "DashBoard", icon: <FiBarChart2 /> },
+  { sectionName: "Food", icon: <PiHamburger /> },
+  { sectionName: "Settings", icon: <FiSettings /> },
 ];
 
 const MenuContent = ({ onClose, ...rest }: MobileContentProps) => {
